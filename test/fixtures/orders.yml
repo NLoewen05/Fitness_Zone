@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  quantity: 9.99
+  status: MyString
+  gst: 9.99
+  pst: 9.99
+  price: 1.5
+  totalPrice: 1.5
+
+two:
+  quantity: 9.99
+  status: MyString
+  gst: 9.99
+  pst: 9.99
+  price: 1.5
+  totalPrice: 1.5
