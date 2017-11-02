@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171101182928) do
+ActiveRecord::Schema.define(version: 20171102042548) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -39,8 +39,6 @@ ActiveRecord::Schema.define(version: 20171101182928) do
     t.string "bPhone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "admin_users", force: :cascade do |t|
@@ -60,8 +58,18 @@ ActiveRecord::Schema.define(version: 20171101182928) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
-# Could not dump table "orders" because of following StandardError
-#   Unknown type 'reference' for column 'user'
+  create_table "orders", force: :cascade do |t|
+    t.decimal "quantity"
+    t.string "status"
+    t.decimal "gst"
+    t.decimal "pst"
+    t.float "price"
+    t.float "totalPrice"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
 
   create_table "product_categories", force: :cascade do |t|
     t.string "name"
@@ -69,8 +77,20 @@ ActiveRecord::Schema.define(version: 20171101182928) do
     t.datetime "updated_at", null: false
   end
 
-# Could not dump table "products" because of following StandardError
-#   Unknown type 'reference' for column 'productcategory'
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.float "weight"
+    t.decimal "price"
+    t.text "description"
+    t.string "picture"
+    t.string "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "product_category_id"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_products_on_order_id"
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
@@ -81,8 +101,8 @@ ActiveRecord::Schema.define(version: 20171101182928) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "address_id"
-    t.index ["address_id"], name: "index_users_on_address_id"
+    t.integer "order_id"
+    t.index ["order_id"], name: "index_users_on_order_id"
   end
 
 end
