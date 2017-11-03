@@ -12,13 +12,16 @@
 
 ActiveRecord::Schema.define(version: 20171102045814) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
     t.text "body"
     t.string "resource_type"
-    t.integer "resource_id"
+    t.bigint "resource_id"
     t.string "author_type"
-    t.integer "author_id"
+    t.bigint "author_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20171102045814) do
     t.string "bPhone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
@@ -69,8 +72,8 @@ ActiveRecord::Schema.define(version: 20171102045814) do
     t.float "totalPrice"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "product_id"
+    t.bigint "user_id"
+    t.bigint "product_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -90,7 +93,7 @@ ActiveRecord::Schema.define(version: 20171102045814) do
     t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "product_category_id"
+    t.bigint "product_category_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
@@ -111,10 +114,15 @@ ActiveRecord::Schema.define(version: 20171102045814) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "order_id"
+    t.bigint "order_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["order_id"], name: "index_users_on_order_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "users"
+  add_foreign_key "products", "product_categories"
+  add_foreign_key "users", "orders"
 end
