@@ -9,6 +9,9 @@ end
 gem 'activeadmin'
 gem 'devise'
 gem 'pg'
+gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'popper_js'
 
 
 
