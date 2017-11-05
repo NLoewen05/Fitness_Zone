@@ -9,11 +9,8 @@ end
 gem 'activeadmin'
 gem 'devise'
 gem 'pg'
-gem 'bootstrap-sass'
-gem 'jquery-rails'
-gem 'popper_js'
-
-
+gem 'semantic-ui-sass'
+gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
