@@ -12,17 +12,20 @@ default: &default
 
 development:
   <<: *default
-  database: Project_development
+  adapter: postgresql
+  database: myapp_test
+  host: localhost
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: Project_test
+  database: myapp_test
 
 production:
   <<: *default
-  database: Project_production
-  username: Project
-  password: <%= ENV['PROJECT_DATABASE_PASSWORD'] %>
+  database: myapp_production
+  username: myapp
+  password: <%= ENV['myapp_DATABASE_PASSWORD'] %>
