@@ -276,6 +276,9 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
   config.scoped_views = true
 
+
+  config.assets.initialize_on_precompile = false
+
 end
 
 
