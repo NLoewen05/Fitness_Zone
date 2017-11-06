@@ -8,12 +8,13 @@ end
 # Project Specifc Gems
 gem 'activeadmin'
 gem 'devise'
-gem 'pg'
 gem 'semantic-ui-sass'
 gem 'rails_12factor', group: :production
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+# Use PostgreSQL for the database
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
